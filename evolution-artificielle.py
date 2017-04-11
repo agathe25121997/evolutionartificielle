@@ -15,15 +15,14 @@ def PopDeDepart(l,N):
     for i in range(N):
         seq = []
         for y in range(l):
-            tirage = random.randint(0, 3)
-            nuc = augc[tirage]
+            nuc = augc[random.randint(0, 3)]
             seq.append(nuc)
         sequences.append(seq)
     return sequences
 
 
-# PHÉNOTYPE
-# fonction qui génère la liste des appariements
+# PHÉNOTYPE CIBLE
+# fonction qui génère la liste des appariements cibles
 # sous forme d'une liste de paires de positions
 def ListeAppariements(repli):
     listeapp = []
@@ -81,14 +80,14 @@ def score(listeapp, sequences, consensus):
 
 #reproduction
 #le score est proportionel à la probabilité de se reproduire
-#score de 5 = 5/21 chances de se reproduire (car 21 = nombre d'appariements de la cible)
+#score de 5 = 5/45 chances de se reproduire (car 45 = score max)
 
 def reproductionbis(sequences, N):  # prends plus de temps que l'autre fonction reproduction
     enfants = []
     ListeScore = score(listeapp, sequences, consensus)
     for i in range(0, (len(ListeScore))):
         scorei = ListeScore[i]
-        a = random.randint(0, 42)  # 21 appariements + 21 consensus
+        a = random.randint(0, 45)  # 20 appariements + 25 consensus
         if a <= scorei:
             NewSeq = mutation(sequences[i], substitution, deletion, insertion)
             enfants.append(NewSeq)
@@ -127,12 +126,12 @@ def reproduction(sequences, N, moy):
 
 # induit une mutation avec une probabilité de 1/100
 def mutation(seq, substitution, deletion, insertion):  # seq = un seul ARNt
-    tirage = random.randint(1, 300) # il ya une chance sur 100 d'avoir une mutation de 3 types différents
-                                    # une chance sur 300 pour chaque
+    tirage = random.randint(1, 100) # il ya une chance sur 100 d'avoir une mutation de 3 types différents
+                                    # 3 chance sur 100 d'avoir une mutation
     augc = ["A","U","G", "C"]
     pos_mutation = random.randint(0, (len(seq)-1)) # une position choisie au hasard dans la séquence de longueur l
 
-    if tirage == substitution:  # 3 chance sur 300 = 1/100
+    if tirage == substitution:  
         nuc = augc[random.randint(0, 3)]  # un nucléotide de remplacement choisi au hasard
         while nuc == seq[pos_mutation]:  # au cas ou le nucléotide de remplacement est le même que l'original
             nuc = augc[random.randint(0, 3)]
@@ -167,7 +166,7 @@ enfants = PopDeDepart(l,N)
 
 #sequences consensus
 
-consensus = {"U":(33, 8), "C":(11, 25, 32, 48, 60, 62), "T":(11, 25, 32, 48, 60, 62), "A":(14, 21, 58, 9, 10, 15, 24, 37, 52, 57), "G":(19, 18, 53,9, 10, 15, 24, 37, 52, 57)}
+consensus = {"U":(8,11,25,32,33,48,60,62), "C":(11,25,32,48,60,61,62,74,75), "A":(9,10,14,15,21,24,37,52,57,58), "G":(9,10,15,18,19,24,37,52,53,57)}
 
 #appariements
 repli1 = [1, 7, 72]
