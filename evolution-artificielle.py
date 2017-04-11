@@ -10,13 +10,12 @@ import matplotlib.pyplot as plt
 def PopDeDepart(l,N):
 
     augc = ["A","U","G", "C"]
-    sequences = []
+    sequences = []              #liste de listes contenant toutes les séquences d'une génération
 
     for i in range(N):
-        seq = []
+        seq = []                #séquence d'un ARNt
         for y in range(l):
-            tirage = random.randint(0, 3)
-            nuc = augc[tirage]
+            nuc = augc[random.randint(0, 3)]
             seq.append(nuc)
         sequences.append(seq)
     return sequences
