@@ -134,22 +134,22 @@ def mutation(seq):   # seq = un seul ARNt
     substitution = 1
     deletion = 2
     insertion = 3
-    tirage = random.randint(1, 300)                     # il ya 1 chance /100 d'avoir une mutation de 3 types différents
-                                                        # 1 chance /300 pour chaque type
-                                                        # On tire aléatoirement un nombre entre 1, 300
+    tirage = random.randint(1, 100)                     # il ya 1 chance /100 d'avoir une mutation de 3 types différents
+                                                        # 3 chances /100 d'avoir une mutation
+                                                        # On tire aléatoirement un nombre entre 1 et 100
     augc = ["A","U","G", "C"]
     pos_mutation = random.randint(0, (len(seq)-1))      # Une position choisie au hasard dans la séquence de longueur l
 
-    if tirage == substitution:                          # 3 chance /300 = 1/100
+    if tirage == substitution:                          # 1/100
         nuc = augc[random.randint(0, 3)]                # Un nucléotide de remplacement choisi au hasard
         while nuc == seq[pos_mutation]:                 # Au cas ou le nuc de remplacement est le même que l'original
             nuc = augc[random.randint(0, 3)]            # on retire un nuc jusqu'a ce qu'il soit différent de l'original
         seq[pos_mutation] = nuc                         # On remplace
 
-    elif tirage == deletion:                            # 3 chance /300 = 1/100
+    elif tirage == deletion:                            # 1/100
         del seq[pos_mutation]
 
-    elif tirage == insertion:                           # 3 chance /300 = 1/100
+    elif tirage == insertion:                           # 1/100
         nuc = augc[random.randint(0, 3)]                # un nucléotide choisi au hasard
         seq.insert(pos_mutation, nuc)                   # On l'insert
 
@@ -208,13 +208,6 @@ repli4 = [49, 53, 65]
 repli = [repli1] + [repli2] + [repli3] + [repli4]
 
 listeapp = (ListeAppariements(repli))  #liste de liste contenant 2 positions : la position des appariements de la sequence cible
-
-
-# mutation
-# on définit le tirage qui induira une mutation dans la fonction mutation
-substitution = 1
-deletion = 2
-insertion = 3
 
 #reproduction
 nbr_generation = 100
