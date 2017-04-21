@@ -45,18 +45,18 @@ def ListeAppariements(repli):               # Repli est une liste contenant 3 é
 
 
 # permet de verifier si 2 nucléotides à deux positions précises de la séquences sont complémentaires ou non
-def complementaire(sequence, pos1, pos2):   # pos1 et pos2 sont les positions des nucleotides dont on cherche
+def complementaire(sequences, pos1, pos2):   # pos1 et pos2 sont les positions des nucleotides dont on cherche
                                             # à savoir la complémentarité
     # A et U ou U et A s'apparient
-    if ((len(sequence)-1) >= (pos1) and (len(sequence)-1) >= (pos2)) and ((sequence[pos1] == "A" and sequence[pos2] == "U") or (sequence[pos2] == "A" and sequence[pos1] == "U")):
+    if ((len(sequences)-1) >= (pos1) and (len(sequences)-1) >= (pos2)) and ((sequences[pos1] == "A" and sequence[pos2] == "U") or (sequence[pos2] == "A" and sequence[pos1] == "U")):
         complement = True
 
     # G et C ou C et G s'apparient
-    elif ((len(sequence)-1) >= (pos1) and (len(sequence)-1) >= (pos2)) and ((sequence[pos1] == "G" and sequence[pos2] == "C") or (sequence[pos2] == "G" and sequence[pos1] == "C")):
+    elif ((len(sequences)-1) >= (pos1) and (len(sequences)-1) >= (pos2)) and ((sequences[pos1] == "G" and sequences[pos2] == "C") or (sequence[pos2] == "G" and sequence[pos1] == "C")):
         complement = True
 
     # G et U ou U et G s'apparient
-    elif ((len(sequence)-1) >= (pos1) and (len(sequence)-1) >= (pos2)) and ((sequence[pos1] == "G" and sequence[pos2] == "U") or (sequence[pos2] == "G" and sequence[pos1] == "U")):
+    elif ((len(sequences)-1) >= (pos1) and (len(sequences)-1) >= (pos2)) and ((sequences[pos1] == "G" and sequences[pos2] == "U") or (sequence[pos2] == "G" and sequence[pos1] == "U")):
         complement = True
 
     # si à pos1 et à pos2 on trouve 2 nucs ne s'appariant pas on retourne False
