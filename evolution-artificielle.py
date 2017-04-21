@@ -118,9 +118,9 @@ def reproduction(sequences, N):
             d = random.randint(0, (len(enfants)-1))
         sequence1 = enfants[c]                  # ce nombre représente l'index de la séquence dans la liste
         sequence2 = enfants[d]
-        recombinés = recombinaison(sequence1, sequence2)
-        enfants[c] = recombinés[0]
-        enfants[d] = recombinés[1]
+        recombines = recombinaison(sequence1, sequence2)
+        enfants[c] = recombines[0]
+        enfants[d] = recombines[1]
 
     return [enfants, ListeScore]                # on retourne une liste avec les enfants et les scores pour pouvoir
                                                 # retourner ces deux elements en même temps et les utiliser séparément
