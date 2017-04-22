@@ -168,27 +168,26 @@ def reproduction(sequences, N):
 # param seq : une séquence
 # return : la même séquence mutée ou pas
 def mutation(seq):   # seq = un seul ARNt
-    substitution = 1
-    deletion = 2
-    insertion = 3
     tirage = random.randint(1, 100)                     # il ya 1 chance /100 d'avoir une mutation de 3 types différents                                                   # 1 chance /300 pour chaque type
     seqbis = copy.deepcopy(seq)                                                 # On tire aléatoirement un nombre entre 1, 300
     augc = ["A", "U", "G", "C"]
     pos_mutation = random.randint(0, (len(seq)-1))      # Une position choisie au hasard dans la séquence de longueur l
 
-    if tirage == substitution:
+    if tirage == 1:                                     #substitution : 1/100 chance
         print("s")
         nuc = augc[random.randint(0, 3)]                # Un nucléotide de remplacement choisi au hasard
         while nuc == seqbis[pos_mutation]:                 # Au cas ou le nuc de remplacement est le même que l'original
             nuc = augc[random.randint(0, 3)]            # on retire un nuc jusqu'a ce qu'il soit différent de l'original
         seqbis[pos_mutation] = nuc
-    elif tirage == deletion:
+    elif tirage == 2:                                   #délétion : 1/100 chance
         print("d")
         del seqbis[pos_mutation]
-    elif tirage == insertion:
+    elif tirage == 3:                                   #insertion : 1/100 chance
         print("i")
         nuc = augc[random.randint(0, 3)]                # un nucléotide choisi au hasard
         seqbis.insert(pos_mutation, nuc)
+    else:
+        print "Pas de mutation"
     return seqbis
 
 # MOYENNE
