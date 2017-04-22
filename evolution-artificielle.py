@@ -231,6 +231,14 @@ def recombinaison(sequence1, sequence2):
 
     return [sequence1bis, sequence2bis]
 
+#Fonction Score Max
+def Fctmax(ListeScore):
+	c=ListeScore[0]
+	for X in ListeScore :
+		if X>c:
+			c=X
+	return c 
+
 
 
 #P R O G R A M M E  P R I N C I P A L
@@ -276,6 +284,7 @@ for i in range(nbr_generation):
     abs.append(i+1)                         # numero de la génération
 
 plt.plot(abs, ListeMoy)                     # (numero de la génération en x, moyenne en y)
+plt.plot(abs,LSMax)                         # ajout de la courbe du score max de chaque génération
 plt.ylabel('Score Moyen')                   # titre axe des y
 plt.xlabel('Nombre De Generation')          # titre axe des x
 plt.show()                                  # affichage
